@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>PODERP</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <script>
+    // 修复开发模式下的路由
+    window.BASE_URL = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
+  </script>
+  <div id="root"></div>
+  <script src="./build/index.js"></script>
+</body>
+</html> 

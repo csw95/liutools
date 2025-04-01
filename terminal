@@ -1,0 +1,10 @@
+# 创建项目文件夹
+mkdir PODERP
+cd PODERP
+
+# 初始化package.json
+npm init -y
+
+# 安装依赖
+npm install --save electron react react-dom react-router-dom antd @ant-design/icons electron-builder electron-is-dev sqlite3 sequelize electron-store uuid axios
+npm install --save-dev electron-rebuild concurrently wait-on cross-env nodemon electron-devtools-installer @electron/rebuild typescript ts-node @types/react @types/react-dom @types/node 

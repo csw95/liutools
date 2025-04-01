@@ -1,0 +1,4 @@
+// 下载相关
+ipcMain.handle('download-images-by-batch', async (event, batchId) => {
+  return await downloadImages(batchId);
+});

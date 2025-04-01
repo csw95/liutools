@@ -1,0 +1,41 @@
+
+appId: com.poderp.app
+productName: PODERP
+electronVersion: 35.1.2
+files:
+  - packaged-start.js
+  - dist/**/*
+  - build/**/*
+  - node_modules/**/*
+  - package.json
+  - index.html
+  - styles.css
+extraResources:
+  - from: public
+    to: public
+  - from: database
+    to: database
+  - from: migrations
+    to: migrations
+directories:
+  buildResources: assets
+  output: release
+asarUnpack:
+  - node_modules/sqlite3/**/*
+  - node_modules/sequelize/**/*
+win:
+  target:
+    - nsis
+    - portable
+  icon: assets/icon.ico
+mac:
+  target:
+    - dmg
+    - zip
+  icon: assets/icon.icns
+  category: public.app-category.business
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true

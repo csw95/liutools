@@ -1,0 +1,15 @@
+{
+  "development": {
+    "dialect": "sqlite",
+    "storage": "./database/main.sqlite"
+  },
+  "test": {
+    "dialect": "sqlite",
+    "storage": "./database/main.sqlite"
+  },
+  "production": {
+    "dialect": "sqlite",
+    "storage": "./database/main.sqlite"
+  },
+  "downloadPath": "./downloads"
+} 
