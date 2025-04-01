@@ -87,16 +87,17 @@ if %errorLevel% neq 0 (
 echo.
 echo 正在检查代码库...
 if not exist "%WORK_DIR%\.git" (
-    echo 正在克隆代码库...
-    git clone https://github.com/csw95/liutools.git . >> %LOGFILE% 2>&1
+    echo 正在克隆代码库（master分支）...
+    git clone -b master https://github.com/csw95/liutools.git . >> %LOGFILE% 2>&1
     if %errorLevel% neq 0 (
         echo 克隆代码库失败，请查看日志: %LOGFILE%
         pause
         exit /b 1
     )
 ) else (
-    echo 代码库已存在，正在拉取最新代码...
-    git pull >> %LOGFILE% 2>&1
+    echo 代码库已存在，正在拉取master分支最新代码...
+    git checkout master >> %LOGFILE% 2>&1
+    git pull origin master >> %LOGFILE% 2>&1
     if %errorLevel% neq 0 (
         echo 拉取代码失败，请查看日志: %LOGFILE%
         pause

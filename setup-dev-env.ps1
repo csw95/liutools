@@ -100,9 +100,9 @@ if (-not (Get-Command node -ErrorAction SilentlyContinue)) {
 Write-Host ""
 Write-Host "正在检查代码库..." -ForegroundColor Yellow
 if (-not (Test-Path "$workDir\.git")) {
-    Write-Host "正在克隆代码库..." -ForegroundColor Green
+    Write-Host "正在克隆代码库（master分支）..." -ForegroundColor Green
     try {
-        git clone https://github.com/csw95/liutools.git . | Out-File $logFile -Append
+        git clone -b master https://github.com/csw95/liutools.git . | Out-File $logFile -Append
     } catch {
         Write-Host "克隆代码库失败: $_" -ForegroundColor Red
         Write-Output "克隆代码库失败: $_" | Out-File $logFile -Append
@@ -110,9 +110,10 @@ if (-not (Test-Path "$workDir\.git")) {
         exit 1
     }
 } else {
-    Write-Host "代码库已存在，正在拉取最新代码..." -ForegroundColor Green
+    Write-Host "代码库已存在，正在拉取master分支最新代码..." -ForegroundColor Green
     try {
-        git pull | Out-File $logFile -Append
+        git checkout master | Out-File $logFile -Append
+        git pull origin master | Out-File $logFile -Append
     } catch {
         Write-Host "拉取代码失败: $_" -ForegroundColor Red
         Write-Output "拉取代码失败: $_" | Out-File $logFile -Append
