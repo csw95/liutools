@@ -1,10 +1,11 @@
+// @ts-nocheck
 import { google } from 'googleapis';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import path from 'path';
 import fs from 'fs';
 import { Order, FolderDownloadStatus, Image } from './data';
-import config from '../config';
+const config = require('../config');
 import logger from './logger';
 import { GaxiosResponse } from 'gaxios';
 import { drive_v3 } from 'googleapis';

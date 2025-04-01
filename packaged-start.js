@@ -1,10 +1,10 @@
+
 'use strict';
 
-// 禁用ESM加载
+// 这个文件是打包后的应用入口点
+process.env.PACKAGED = 'true';
 process.env.NODE_NO_ESM_MODULE_LOADING = '1';
 process.env.NODE_OPTIONS = '--no-warnings';
-process.env.PACKAGED = 'true';
 
-// 直接加载主文件
-console.log('在打包环境中启动应用...');
-require('./main.js');
+// 加载主程序
+require('./dist/electron/electron/main.js');

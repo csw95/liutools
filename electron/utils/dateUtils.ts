@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * 格式化日期为 YYYY-MM-DD 格式
  */

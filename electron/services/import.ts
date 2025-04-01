@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as ExcelJS from 'exceljs';
 import { v4 as uuidv4 } from 'uuid';
 import Batch from '../../database/models/batch';

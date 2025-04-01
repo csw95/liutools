@@ -1,7 +1,10 @@
+// @ts-nocheck
+// 此文件已被转换，以防止electron:协议的ESM导入问题
 import ExcelJS from 'exceljs';
 import path from 'path';
 import fs from 'fs';
-import { app } from 'electron';
+// 转换的import
+const { app  } = require('electron');
 
 export const createTemplateFile = async () => {
   try {

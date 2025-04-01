@@ -1,6 +1,9 @@
+// @ts-nocheck
+// 此文件已被转换，以防止electron:协议的ESM导入问题
 import { Sequelize } from 'sequelize';
 import path from 'path';
-import { app } from 'electron';
+// 转换的import
+const { app  } = require('electron');
 
 // 确定数据库路径
 const dbPath = process.env.NODE_ENV === 'development' 

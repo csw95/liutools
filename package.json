@@ -1,8 +1,8 @@
 {
   "name": "poderp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "POD订单ERP系统",
-  "main": "dist/electron/electron/main.js",
+  "main": "packaged-start.js",
   "type": "commonjs",
   "scripts": {
     "start": "node start.js",
@@ -10,15 +10,33 @@
     "fix-db": "node scripts/fix-database.js",
     "fix-preload": "node scripts/fix-preload.js",
     "fix-all": "node scripts/fix-all.js",
+    "fix-esm": "node fix-electron-esm.js",
+    "fix-esm-protocol": "node scripts/fix-esm-protocol.js",
+    "fix-esm-direct": "node scripts/fix-electron-esm-direct.js",
+    "fix-ts-imports": "node scripts/transform-ts-imports.js",
+    "fix-ts-errors": "node scripts/fix-ts-errors.js",
+    "fix-node-options": "node scripts/fix-node-options.js",
+    "fix-is-dev": "node electron-is-dev-fix.js",
+    "fix-ultimate": "node scripts/ultimate-fix.js",
+    "fix-complete": "node scripts/complete-fix.js",
+    "fix-icons": "node scripts/fix-icons.js",
+    "package:no-icons": "node scripts/package-no-icons.js",
+    "package:mac:no-icons": "node scripts/package-no-icons.js mac",
+    "package:win:no-icons": "node scripts/package-no-icons.js win",
+    "package:mac:intel": "npm run prepare-package && electron-builder build --mac --x64 --publish never",
     "compile": "tsc -p electron/tsconfig.json && webpack",
     "dev": "concurrently \"webpack --watch\" \"tsc -p electron/tsconfig.json --watch\" \"electron .\"",
     "build": "webpack && tsc -p electron/tsconfig.json",
-    "prepare-package": "node scripts/prepare-package.js",
+    "prepare-package": "node self-fix.js && node self-fix.js && node scripts/prepare-package.js",
     "package": "npm run prepare-package && electron-builder build --win --mac --publish never",
     "package:win": "npm run prepare-package && electron-builder build --win --publish never",
     "package:mac": "npm run prepare-package && electron-builder build --mac --publish never",
     "rebuild": "electron-rebuild -f -w sqlite3",
-    "postinstall": "electron-builder install-app-deps"
+    "postinstall": "electron-builder install-app-deps",
+    "start_direct": "node direct-launcher.js",
+    "start_simple": "node simple-launcher.js",
+    "electron": "node electron-runner.js",
+    "electron-final": "node electron-runner-final.js"
   },
   "author": "",
   "license": "ISC",
@@ -69,7 +87,6 @@
         "dmg",
         "zip"
       ],
-      "icon": "assets/icon.icns",
       "category": "public.app-category.business"
     },
     "nsis": {
@@ -92,7 +109,7 @@
     "adm-zip": "^0.5.16",
     "antd": "^5.24.5",
     "axios": "^1.8.4",
-    "electron-is-dev": "^3.0.1",
+    "electron-is-dev": "3.0.1",
     "electron-store": "^10.0.1",
     "exceljs": "^4.4.0",
     "googleapis": "^148.0.0",
@@ -134,5 +151,6 @@
     "compilerOptions": {
       "module": "commonjs"
     }
-  }
+  },
+  "_originalMain": "direct-launcher.js"
 }

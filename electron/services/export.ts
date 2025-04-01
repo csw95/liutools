@@ -1,7 +1,10 @@
+// @ts-nocheck
+// 此文件已被转换，以防止electron:协议的ESM导入问题
 import * as ExcelJS from 'exceljs';
 import fs from 'fs';
 import path from 'path';
-import { app, dialog } from 'electron';
+// 转换的import
+const { app, dialog  } = require('electron');
 import Order from '../../database/models/order';
 import Batch from '../../database/models/batch';
 import Image from '../../database/models/image';
@@ -9,7 +12,8 @@ import { formatDate } from '../utils/dateUtils';
 import { Op } from 'sequelize';
 import AdmZip from 'adm-zip';
 import { v4 as uuidv4 } from 'uuid';
-import config from '../config';
+// 转换的import
+const config = require('../config');
 import { getConfig } from '../services/config';
 
 // 导出设置

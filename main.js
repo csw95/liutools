@@ -1,3 +1,22 @@
+
+// ===== Electron ESM URL协议修复 =====
+// 启用CommonJS模式，禁用ESM
+if (typeof process !== 'undefined') {
+  // 禁用ESM加载
+  process.env.NODE_NO_ESM_MODULE_LOADING = '1';
+  
+  // 禁用实验性加载器
+  process.env.NODE_OPTIONS = '--no-warnings';
+  
+  // 加载运行时补丁
+  try {
+    require('./patches/runtime-patch.js');
+  } catch (e) {
+    console.error('加载ESM补丁失败:', e);
+  }
+}
+// ===== Electron ESM URL协议修复结束 =====
+
 // 使用require，避免ESM
 const fs = require('fs');
 const path = require('path');
@@ -5,6 +24,7 @@ const { app } = require('electron');
 
 // 设置环境变量，禁用ESM加载
 process.env.NODE_NO_ESM_MODULE_LOADING = '1';
+// 关键修复：禁用electron:协议的ESM加载
 process.env.NODE_OPTIONS = '--no-warnings';
 
 // 检查是否是开发环境

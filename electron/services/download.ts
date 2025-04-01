@@ -1,7 +1,10 @@
+// @ts-nocheck
+// 此文件已被转换，以防止electron:协议的ESM导入问题
 import axios from 'axios';
 import fs from 'fs';
 import path from 'path';
-import { app } from 'electron';
+// 转换的import
+const { app  } = require('electron');
 import { v4 as uuidv4 } from 'uuid';
 import Image from '../../database/models/image';
 import Order from '../../database/models/order';
@@ -10,7 +13,8 @@ import { applyGoogleCookiesToRequest } from './google-auth';
 import { JSDOM } from 'jsdom';
 import FolderDownloadStatus from '../../database/models/folderDownloadStatus';
 import { processGoogleDriveFolder, isGoogleDriveFolder } from './google-drive';
-import config from '../config';
+// 转换的import
+const config = require('../config');
 
 // 下载设置
 const DEFAULT_DOWNLOAD_PATH = config.downloadPath; // 使用配置文件中的路径

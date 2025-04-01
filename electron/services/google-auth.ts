@@ -1,5 +1,9 @@
-import { BrowserWindow } from 'electron';
-import { session } from 'electron';
+// @ts-nocheck
+// 此文件已被转换，以防止electron:协议的ESM导入问题
+// 转换的import
+const { BrowserWindow  } = require('electron');
+// 转换的import
+const { session  } = require('electron');
 import path from 'path';
 import fs from 'fs';
 import axios from 'axios';

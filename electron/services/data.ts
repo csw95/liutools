@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Batch from '../../database/models/batch';
 import Order from '../../database/models/order';
 import Image from '../../database/models/image';

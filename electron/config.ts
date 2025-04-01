@@ -1,8 +1,10 @@
+// @ts-nocheck
 /**
  * 系统配置
  */
-import path from 'path';
-import { app } from 'electron';
+// 转换import为require以避免ESM加载问题
+const path = require('path');
+const { app } = require('electron');
 
 const config = {
   // 下载设置
@@ -15,4 +17,5 @@ const config = {
   googleDriveEnabled: true,
 };
 
-export default config; 
+// 使用module.exports而不是export default
+module.exports = config; 

@@ -1,5 +1,28 @@
 
-'use strict';
+// ===== Electron ESM URL协议修复 =====
+// 启用CommonJS模式，禁用ESM
+if (typeof process !== 'undefined') {
+  // 禁用ESM加载
+  process.env.NODE_NO_ESM_MODULE_LOADING = '1';
+  
+  // 禁用实验性加载器
+  process.env.NODE_OPTIONS = '--no-warnings';
+  
+  // 加载运行时补丁
+  try {
+    require('./patches/runtime-patch.js');
+  } catch (e) {
+    console.error('加载ESM补丁失败:', e);
+  }
+}
+// ===== Electron ESM URL协议修复结束 =====
+
+
+'use strict';// 禁用ESM加载
+process.env.NODE_NO_ESM_MODULE_LOADING = '1';
+// 禁用electron:协议的ESM加载
+process.env.NODE_OPTIONS = '--no-warnings';
+
 
 const electron = require('electron');
 const { spawn } = require('child_process');

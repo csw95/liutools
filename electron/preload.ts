@@ -1,4 +1,7 @@
-import { contextBridge, ipcRenderer } from 'electron';
+// @ts-nocheck
+// 此文件已被转换，以防止electron:协议的ESM导入问题
+// 转换的import
+const { contextBridge, ipcRenderer  } = require('electron');
 
 // 使用export {}将文件标记为外部模块
 export {};

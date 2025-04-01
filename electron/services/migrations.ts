@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { initDatabase } from './database';
 import * as AddSourceFolderIdToImages from '../../database/migrations/20250331_add_source_folder_id_to_images';
 

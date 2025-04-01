@@ -5,7 +5,7 @@ const path = require('path');
 process.env.NODE_NO_ESM_MODULE_LOADING = '1';
 
 // 确保使用纯CommonJS模式加载
-const mainPath = path.join(__dirname, './electron/main.ts');
+const mainPath = path.join(__dirname, './dist/electron/electron/main.js');
 
 try {
   require(mainPath);
