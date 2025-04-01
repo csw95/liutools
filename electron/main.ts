@@ -52,14 +52,35 @@ const createWindow = () => {
       nodeIntegration: false,
       contextIsolation: true,
       preload: path.resolve(__dirname, 'preload.js'),
-      devTools: isDev
+      devTools: isDev,
+      webSecurity: true,
+      allowRunningInsecureContent: false,
+      webviewTag: false
     }
   });
 
+  // 设置 CSP 头
+  mainWindow.webContents.session.webRequest.onHeadersReceived((details, callback) => {
+    callback({
+      responseHeaders: {
+        ...details.responseHeaders,
+        'Content-Security-Policy': [
+          "default-src 'self' 'unsafe-inline' 'unsafe-eval' data: file:;"
+        ]
+      }
+    });
+  });
+
   // 加载前端页面
-  const startUrl = isDev 
-    ? `file://${path.join(process.cwd(), 'build', 'index.html')}#/home` 
-    : `file://${path.join(__dirname, '../../build/index.html')}#/home`;
+  const indexPath = isDev 
+    ? path.resolve(process.cwd(), 'build', 'index.html')
+    : path.resolve(__dirname, '../../build/index.html');
+
+  console.log(`尝试加载前端页面: ${indexPath}`);
+  console.log(`文件是否存在: ${fs.existsSync(indexPath)}`);
+    
+  const startUrl = `file://${indexPath}`;
+  console.log(`完整URL: ${startUrl}`);
     
   mainWindow.loadURL(startUrl);
 
